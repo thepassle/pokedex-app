@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+      
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        font-family: 'Roboto', sans-serif;
+        color: black;
+        height: 60px;
+        background: #e56453;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      main {
+        display: flex;
+        height: calc(100% - 60px);
+      }
+
+      #list {
+        padding: 20px;
+        flex: 1;
+        overflow: auto;
+      }
+
+      #info {
+        padding: 20px;
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Pokedex</h1>
+    </header>
+    <main>
+      <div id="list"></div>
+      <div id="info"></div>
+    </main>
+  </body>
+  <script>
+
+  </script>
+</html>
