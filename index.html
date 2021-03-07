@@ -44,11 +44,51 @@
       <h1>Pokedex</h1>
     </header>
     <main>
-      <div id="list"></div>
+      <div id="list">
+        <ol id="pokemonlist"></ol>
+      </div>
       <div id="info"></div>
     </main>
   </body>
   <script>
+    const pokemonlist = document.getElementById("pokemonlist");
+    const info = document.getElementById("info");
+
+    fetch("https://pokeapi.co/api/v2/pokemon/?limit=150")
+      .then(response => response.json())
+      .then(response => {
+
+        response.results.forEach((pokemon, index) => {
+          const listItem = document.createElement('li');
+          listItem.id = index + 1;
+          listItem.innerHTML = `${pokemon.name} <button>stats</button>`;
+          pokemonlist.appendChild(listItem);
+        });
+
+        pokemonlist.addEventListener('click', (event) => {
+          if(event.target.localName !== 'button') return;
+
+          const id = event.target.parentNode.id;
+          fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+            .then(response => response.json())
+            .then(pokemon => {
+              console.log(pokemon);
+              info.innerHTML = `
+                <h2>${pokemon.name}</h2>
+                <img src="${pokemon.sprites.front_default}"></img>
+                <ul>
+                  <li>weight: ${pokemon.weight}</li>
+                  <li>height: ${pokemon.height}</li>
+                </ul>
+              `
+            })
+
+
+
+        })
+
+      })
+
 
   </script>
 </html>
